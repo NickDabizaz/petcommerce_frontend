@@ -1,0 +1,10 @@
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0 !important;
+  background: transparent !important;
+  display: none !important;
+}
+
+.prod-card:hover {
+  border: 1px solid #1286ce !important;
+  cursor: pointer;
+}
