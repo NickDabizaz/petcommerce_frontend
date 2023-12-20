@@ -147,6 +147,18 @@ const ManageDetailCommunity = () => {
         >
           Store Management
         </NavLink>
+        <NavLink
+          to="/admin/manage-transaction"
+          style={{
+            color: "white",
+            fontFamily: "Literata",
+            fontWeight: 700,
+            fontSize: "15pt",
+            marginLeft: "3%",
+          }}
+        >
+          User Transaction Reports
+        </NavLink>
       </div>
       <div
         className="container-fluid"
@@ -168,7 +180,16 @@ const ManageDetailCommunity = () => {
               </div>
             ) : (
               <div>
-                <h2 className="text-2xl font-semibold mb-4 text-center">
+                <div
+                  className="btn p-0"
+                  style={{ fontSize: "2rem" }}
+                  onClick={() => {
+                    navigate(-1);
+                  }}
+                >
+                  ⬅️
+                </div>
+                <h2 className="text-3xl font-semibold mb-4 text-center">
                   {postData.title}
                 </h2>
 
@@ -207,32 +228,57 @@ const ManageDetailCommunity = () => {
                     </div>
                     <div style={{ width: "100%" }}>
                       <h3 className="text-xl text-right font-semibold mb-2">
-                        {`Last Comment Activity : ${
-                          postData.comments[postData.comments.length - 1]
-                            .comment_time
-                        }`}
+                        {`Latest Comment : ${new Date(
+                          postData.comments[
+                            postData.comments.length - 1
+                          ].comment_time
+                        ).toLocaleString("en-GB", {
+                          day: "2-digit",
+                          month: "2-digit",
+                          year: "numeric",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                          second: "2-digit",
+                        })}`}
                       </h3>
                     </div>
                   </div>
                   {postData.comments.map((comment) => (
                     <div
                       key={comment.comment_id}
-                      className="mb-4 p-4 border border-primary rounded-lg"
+                      className="mb-4 p-3 px-4 border border-primary rounded-lg"
                     >
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="font-semibold">
-                          {comment.user.name}
-                        </span>
-                        <button
-                          onClick={() =>
-                            handleDeleteComment(comment.comment_id)
-                          }
-                          className="text-red-500"
-                        >
-                          Delete
-                        </button>
+                      <div className="row">
+                        <div className="col-11">
+                          <span className="mb-2">
+                            <b>{comment.user.name}</b>
+                          </span>
+                          <p>{comment.comment_text}</p>
+                          <p>
+                            {new Date(comment.comment_time).toLocaleString(
+                              "en-GB",
+                              {
+                                day: "2-digit",
+                                month: "2-digit",
+                                year: "numeric",
+                                hour: "2-digit",
+                                minute: "2-digit",
+                                second: "2-digit",
+                              }
+                            )}
+                          </p>
+                        </div>
+                        <div className="col-1 my-auto">
+                          <button
+                            onClick={() =>
+                              handleDeleteComment(comment.comment_id)
+                            }
+                            className="text-white-500 btn btn-danger"
+                          >
+                            Delete
+                          </button>
+                        </div>
                       </div>
-                      <p>{comment.comment_text}</p>
                     </div>
                   ))}
                 </div>
