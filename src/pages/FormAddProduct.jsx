@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import addpict from "../assets/add.png";
+import Swal from "sweetalert2";
 
 export default function FormAddProduct() {
   const [cookies] = useCookies(["user_id"]);
@@ -79,8 +80,13 @@ export default function FormAddProduct() {
           }
         );
         console.log({ response });
+        Swal.fire({
+          icon: "success",
+          title: "Added New Product",
+          text: "Your new product has been uploaded",
+        });
         setLoading(false);
-        navigate(`/store/${store_id}`);
+        // navigate(`/store/${store_id}`);
       }
       setLoading(false);
     } catch (error) {

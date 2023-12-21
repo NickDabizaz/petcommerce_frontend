@@ -8,6 +8,7 @@ import { faPen } from "@fortawesome/free-solid-svg-icons";
 import trash from "../assets/trash.png";
 import { useCookies } from "react-cookie";
 import { Button, Modal } from "react-bootstrap";
+import Swal from "sweetalert2";
 
 function StoreDetail() {
   const navigate = useNavigate();
@@ -157,8 +158,13 @@ function StoreDetail() {
             user_id: cookie.user_id,
           },
         }
-      );
+      );      
       navigate(0);
+      Swal.fire({
+        icon: "success",
+        title: "Delete Success",
+        text: "The product has been deleted.",
+      });
     } catch (error) {
       console.log(error);
     }
@@ -182,8 +188,13 @@ function StoreDetail() {
             category_id: productCategory,
           },
         }
-      );
+      );      
       navigate(0);
+      Swal.fire({
+        icon: "success",
+        title: "Edit Success",
+        text: "The product has been edited successfully.",
+      });
     } catch (error) {
       console.log(error);
     }
