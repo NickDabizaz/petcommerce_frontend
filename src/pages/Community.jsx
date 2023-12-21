@@ -105,7 +105,7 @@ function Community() {
 
           // Perbarui state likes setelah melakukan like
           setLikes((prevLikes) => [...prevLikes, { post_id, isLike: true }]);
-          location.reload()
+          navigate(0);
         })
         .catch((error) => {
           console.error("Error liking post:", error);
