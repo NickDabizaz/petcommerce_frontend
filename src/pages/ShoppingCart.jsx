@@ -50,6 +50,7 @@ const ShoppingCart = () => {
 
   const deleteOneItem = async (productId) => {
     try {
+      console.log("berhasil delete");
       console.log({ productId });
       await axios.delete(
         `https://petcommerce-backend.onrender.com/cart/${productId}/${cookies.user_id}`
@@ -168,7 +169,7 @@ const ShoppingCart = () => {
   }, [cookies.user_id]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="text-center">Loading...</div>;
   }
 
   return (
@@ -271,8 +272,7 @@ const ShoppingCart = () => {
                       marginLeft: "auto",
                     }}
                     onClick={() => {
-                      deleteOneItem(item.product_id);
-                      navigate(0);
+                      deleteOneItem(item.product_id).then(navigate(0));
                     }}
                   />
                   <div

@@ -285,7 +285,7 @@ function Community() {
       </Modal>
 
       <div>
-        {loading == true && "Loading..."}
+        {loading == true && <div className="text-center">Loading...</div>}
         {loading == false && (
           <div
             className="grid grid-cols-2 text-center m-auto"

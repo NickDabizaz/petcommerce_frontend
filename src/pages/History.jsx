@@ -40,7 +40,7 @@ function History() {
     <>
       {console.log(data)}
       {isLoading ? (
-        "Loading..."
+        <div className="text-center">Loading...</div>
       ) : (
         <div className="bg-gray-100 min-h-screen">
           <MainLayout />
@@ -49,7 +49,7 @@ function History() {
           </p>
           <div className="mx-4 mt-4">
             {isLoading ? (
-              <p>Loading...</p>
+              <p className="text-center">Loading...</p>
             ) : (
               data.map((item) => (
                 <div

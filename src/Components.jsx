@@ -41,6 +41,11 @@ export function MainLayout() {
     setSearchValue(event.target.value);
   };
 
+  const handleLogout = async () => {
+    await Promise.resolve(removeCookie("user_id"));
+    navigate("/");
+  };
+
   useEffect(() => {
     axios
       .get(
@@ -213,12 +218,7 @@ export function MainLayout() {
                     <li>
                       <hr className="dropdown-divider" />
                     </li>
-                    <li
-                      onClick={() => {
-                        removeCookie("user_id");
-                        navigate("/");
-                      }}
-                    >
+                    <li onClick={handleLogout}>
                       <a className="dropdown-item" href="#">
                         Logout
                       </a>

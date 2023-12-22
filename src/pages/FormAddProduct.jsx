@@ -96,7 +96,7 @@ export default function FormAddProduct() {
   };
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p className="text-center">Loading...</p>;
   }
 
   return (

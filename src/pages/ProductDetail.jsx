@@ -132,7 +132,7 @@ function ProductDetail() {
     <>
       <MainLayout />
       <div className="m-4 " style={{ height: "auto" }}>
-        {loading == true && "loading..."}
+        {loading == true && <div className="text-center">Loading...</div>}
         {loading == false && (
           <>
             <div className="row h-80">

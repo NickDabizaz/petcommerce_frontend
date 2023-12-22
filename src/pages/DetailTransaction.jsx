@@ -17,7 +17,7 @@ function DetailTransaction() {
   console.log(orderDetails);
 
   if (!orderDetails) {
-    return <div>Loading...</div>;
+    return <div className="text-center">Loading...</div>;
   }
 
   return (

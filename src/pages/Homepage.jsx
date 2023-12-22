@@ -61,7 +61,7 @@ function HomePage() {
         <h1 className="text-2xl font-bold mb-4">List of Products</h1>
         {loading ? (
           <div className="loader-container">
-            <p>Loading...</p>
+            <p className="text-center">Loading...</p>
           </div>
         ) : (
           <>
